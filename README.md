@@ -7,6 +7,7 @@ require the chromium repository, instead only these libraries need to
 be installed:
 
 - Cython
+- msgpack
 - Protobuf (with headers and protoc)
 
 To install the extension, just run `pip install` on the repository URL, or use

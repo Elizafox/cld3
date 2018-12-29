@@ -38,7 +38,7 @@ def get_language(unicode text, int min_bytes=0, int max_bytes=1000):
         min_bytes, max_bytes)
     cdef Result res = ident.FindLanguage(text.encode('utf8'))
 
-    if res.language != ident.kUnknown:
+    if str(res.language) != ident.kUnknown:
         language = res.language.decode('utf8')
         return LanguagePrediction(language, res.probability, res.is_reliable,
             res.proportion)
@@ -68,7 +68,7 @@ def get_frequent_languages(unicode text, int num_langs, int min_bytes=0,
 
     out = []
     for res in results:
-        if res.language != ident.kUnknown:
+        if str(res.language) != ident.kUnknown:
             language = res.language.decode('utf8')
             out.append(LanguagePrediction(
                 language, res.probability, res.is_reliable, res.proportion))
