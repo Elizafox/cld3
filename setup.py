@@ -46,10 +46,6 @@ INCLUDES = ["./src", "./src/cld_3/protos/"]
 
 LIBRARIES = ["protobuf"]
 
-LONG_DESCRIPTION = (
-    """Python bindings for the CLD3 language classification library by Google."""
-)
-
 CLASSIFIERS = [
     "License :: OSI Approved :: Apache Software License",
     "Programming Language :: Python :: Implementation :: CPython",
@@ -78,6 +74,9 @@ class BuildProtobuf(build):
         build.run(self)
 
 
+with open("README.md") as f:
+    long_description = f.read()
+
 ext = Extension(
     "cld3",
     sources=SOURCES,
@@ -94,7 +93,8 @@ setup(
     author="Google, Johannes Baiter, Elizabeth Myers",
     author_email="elizabeth@interlinked.me",
     description="CLD3 Python bindings",
-    long_description=LONG_DESCRIPTION,
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     license="Apache2",
     keywords=["cld3", "cffi"],
     url="https://github.com/Elizafox/cld3",
